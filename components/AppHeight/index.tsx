@@ -8,9 +8,8 @@ export default function AppHeight() {
     doc.style.setProperty('--app-height', `${window.innerHeight}px`);
   };
 
-  window.onload = appHeight;
-
   useEffect(() => {
+    appHeight();
     window.addEventListener('resize', appHeight);
 
     return () => window.removeEventListener('resize', appHeight);
