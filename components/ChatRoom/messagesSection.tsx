@@ -30,6 +30,7 @@ import {
   MessageContentBox,
   StyledList,
 } from '@/components/common/StyledChatroom/ChatroomStyles';
+import { v4 as uuidv4 } from 'uuid';
 
 interface IMessagesSectionProps {
   selectedThread: IChatUserThread | undefined;
@@ -45,7 +46,7 @@ export default function MessagesSection(props: IMessagesSectionProps): JSX.Eleme
   const [messages, setMessages] = useLocalStorage<IChatMessageDisplay[]>(
     [
       {
-        id: '368451',
+        id: uuidv4(),
         userId: 'user2',
         chatThreadId: 'thread1',
         userDisplayName: 'System',
@@ -101,7 +102,7 @@ export default function MessagesSection(props: IMessagesSectionProps): JSX.Eleme
 
     scrollToBottom();
     setTypingRecipient({
-      id: 'user2System',
+      id: uuidv4(),
       typingDisplayName: 'System',
       typingUserId: 'user2',
     });
