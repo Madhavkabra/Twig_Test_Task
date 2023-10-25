@@ -1,130 +1,17 @@
 'use client';
 
-import { Box, styled, useMediaQuery, useTheme } from '@mui/material';
+import { useMediaQuery, useTheme } from '@mui/material';
 import { Editor } from '@tinymce/tinymce-react';
-import { IChatUserThread } from '@/interfaces/chatThread';
 import React, { useEffect, useState } from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { Editor as TinyMCEEditor } from 'tinymce';
-import { SmileIcon } from '@/components/icon/SmileIcon';
-import { LinkIcon } from '@/components/icon/LinkIcon';
+import { SmileIcon } from '@/icons/SmileIcon';
+import { LinkIcon } from '@/icons/LinkIcon';
 import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
 import FormatBoldIcon from '@mui/icons-material/FormatBold';
-
-interface IMessagesSectionFooterProps {
-  selectedThread: IChatUserThread | undefined;
-  initialValue: string | undefined;
-  scrollToBottom: () => void;
-  setEditorRef: (editor: TinyMCEEditor) => void;
-  onSendClick: () => void;
-  isFirstTyping: boolean;
-  isSecondTying: boolean;
-  setIsFirstTyping: React.Dispatch<boolean>;
-}
-
-interface IMessageFooterBoxProps {
-  isMobile: boolean;
-  isDisabled: boolean;
-}
-
-const MessageFooterBox = styled(Box, {
-  // Configure which props should be forwarded on DOM
-  shouldForwardProp: prop => prop !== 'isMobile' && prop !== 'isDisabled',
-})<IMessageFooterBoxProps>(({ isMobile, theme, isDisabled }) => ({
-  backgroundColor: theme.palette.grey[50],
-  border: isMobile ? 'none' : `1px solid ${theme.palette.grey[200]}`,
-  borderTop: 'none',
-  paddingTop: '1px',
-  paddingLeft: isMobile ? '0px' : '16px',
-  paddingRight: isMobile ? '0px' : '16px',
-  paddingBottom: isMobile ? '0px' : '16px',
-  position: 'relative',
-  '.tox-tinymce': {
-    border: isMobile ? 'none' : `1px solid ${theme.palette.grey[300]}`,
-    borderTop: `1px solid ${theme.palette.grey[300]}`,
-    marginBlockEnd: '0px',
-  },
-  '.tox .tox-toolbar': {
-    flexWrap: 'wrap',
-    flexDirection: 'column',
-    alignContent: 'flex-end',
-  },
-  '.tox .tox-toolbar__primary': {
-    flexWrap: 'wrap',
-    flexDirection: 'column',
-    alignContent: 'flex-end',
-    backgroundImage: 'none',
-  },
-  '.tox:not(.tox-tinymce-inline).tox-tinymce--toolbar-bottom div.tox-editor-header': {
-    borderTop: 'none',
-  },
-  '.tox .tox-toolbar__group button:last-child': {
-    backgroundColor: theme.palette.primary[500],
-    marginLeft: '8px',
-    cursor: 'pointer',
-    textTransform: 'none',
-    fontWeight: 500,
-    lineHeight: '16px',
-    fontFamily: 'Inter',
-    boxShadow: 'none',
-    '&:hover': {
-      boxShadow: 'none',
-    },
-    fontSize: '14px',
-    padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
-    height: '32px',
-    color: theme.palette.common.white,
-    borderRadius: '36px',
-  },
-  '.tox .tox-toolbar__group button': {
-    cursor: 'pointer',
-  },
-  '.tox .tox-toolbar__group button:not(:last-child)': {
-    height: '32px',
-    width: '32px',
-  },
-  '.tox .tox-toolbar__group button:hover': {
-    backgroundColor: theme.palette.grey[100],
-    borderRadius: '100%',
-  },
-  '.tox .tox-toolbar__group button:last-child:hover': {
-    backgroundColor: theme.palette.primary[600],
-    borderRadius: '36px',
-  },
-  '.tox .tox-toolbar__group button:last-child span': {
-    fontWeight: 500,
-    cursor: 'pointer',
-  },
-  '.tox .tox-tbtn svg': {
-    height: '20px',
-    width: '20px',
-    stroke: theme.palette.grey[500],
-    fill: theme.palette.grey[500],
-  },
-  '.tox .tox-tbtn svg:hover': {
-    fill: theme.palette.grey[500],
-  },
-  'button.tox-tbtn.tox-tbtn--select.tox-tbtn--disabled[aria-disabled="true"]': {
-    backgroundColor: '#bdbdbd',
-  },
-  'button.tox-tbtn.tox-tbtn--disabled .tox-icon.tox-tbtn__icon-wrap svg path': {
-    stroke: '#bdbdbd',
-  },
-  '.tox-toolbar--scrolling.tox-tbtn--disabled': {
-    backgroundColor: theme.palette.grey[200],
-  },
-  'iframe.tox-edit-area__iframe': {
-    backgroundColor: isDisabled ? `${theme.palette.grey[200]}` : 'none',
-  },
-  'div.tox-toolbar__primary': {
-    backgroundColor: isDisabled ? `${theme.palette.grey[200]}` : 'none',
-  },
-  'div[data-alloy-vertical-dir="bottomtotop"].tox-editor-header': {
-    backgroundColor: isDisabled ? `${theme.palette.grey[200]}` : 'none',
-  },
-}));
+import { MessageFooterBox } from './styles';
+import { IMessagesSectionFooterProps } from './interface';
 
 export default function MessagesSectionFooter(props: IMessagesSectionFooterProps): JSX.Element {
   const pluginValues: string[] = ['emoticons', 'autolink', 'link', 'autoresize', 'lists'];

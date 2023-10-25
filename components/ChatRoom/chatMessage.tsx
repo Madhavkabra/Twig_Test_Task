@@ -4,7 +4,17 @@ import { IChatMessageDisplay } from '@/interfaces/chatMessage';
 import ListItemText from '@mui/material/ListItemText';
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import { FlexBox, MessageTiteTypography, StyledAvatar, StyledChatBox, StyledListItem, StyledListItemAvatar, StyledVisibilityIcon, TimeTypography } from './styles';
+import {
+  FlexBox,
+  MessageTiteTypography,
+  StyledAvatar,
+  StyledChatBox,
+  StyledListItem,
+  StyledListItemAvatar,
+  StyledVisibilityIcon,
+  TimeTypography,
+} from './styles';
+import { useTheme } from '@mui/material';
 
 interface IChatMessageProps extends IChatMessageDisplay {
   children: React.ReactNode;

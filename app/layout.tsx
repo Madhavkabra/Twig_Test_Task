@@ -16,7 +16,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <AppHeight />
         <MuiThemeProvider>
           <Header />
-
           {children}
         </MuiThemeProvider>
       </body>

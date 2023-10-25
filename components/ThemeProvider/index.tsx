@@ -13,7 +13,6 @@ export default function MuiThemeProvider({ children }: MuiThemeProvider) {
   return (
     <ThemeProvider theme={appTheme}>
       <CssBaseline />
-
       <MainBox>{children}</MainBox>
     </ThemeProvider>
   );

@@ -9,9 +9,10 @@ interface ISantizeProps {
 }
 
 export default function Sanitize(props: ISantizeProps): JSX.Element {
-  const [cleanHtml, setCleanHtml] = useState('');
+  const [cleanHtml, setCleanHtml] = useState<string | null>(null);
 
   useEffect(() => {
+    console.log('==============');
     const clean = DOMPurify.sanitize(props.html, { ADD_ATTR: ['target'] });
 
     setCleanHtml(clean);
@@ -19,5 +20,5 @@ export default function Sanitize(props: ISantizeProps): JSX.Element {
 
   console.log({ cleanHtml });
 
-  return <Box dangerouslySetInnerHTML={{ __html: cleanHtml ?? '' }} />;
+  return cleanHtml ? <Box dangerouslySetInnerHTML={{ __html: cleanHtml }} /> : <></>;
 }

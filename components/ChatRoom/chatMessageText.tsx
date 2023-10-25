@@ -1,24 +1,15 @@
 'use client';
 
 import { IChatMessageDisplay } from '@/interfaces/chatMessage';
-import Sanitize from '@/components/Sanitize/Sanitize';
-import Typography from '@mui/material/Typography';
-import { styled, useTheme } from '@mui/material';
-
-const StyledTypography = styled(Typography)`
-  p {
-    min-height: 20px;
-  }
-  ul {
-    list-style-type: disc;
-  }
-`;
+import Sanitize from '@/components/Sanitize';
+import { useTheme } from '@mui/material';
+import { StyledMessageTypography } from './styles';
 
 export default function ChatMessageText(props: IChatMessageDisplay): JSX.Element {
   const theme = useTheme();
   return (
-    <StyledTypography variant="subtitle2" fontWeight={400} color={theme.palette.grey[900]}>
+    <StyledMessageTypography variant="subtitle2" fontWeight={400} color={theme.palette.grey[900]}>
       <Sanitize html={props.content} />
-    </StyledTypography>
+    </StyledMessageTypography>
   );
 }

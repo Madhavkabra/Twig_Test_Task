@@ -2,41 +2,31 @@
 
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import { IChatUserThread } from '@/interfaces/chatThread';
 import * as React from 'react';
 import { ChatMessageType, IChatMessageDisplay, IChatTyping } from '@/interfaces/chatMessage';
 import { Editor as TinyMCEEditor } from 'tinymce';
 import ChatMessageText from '@/components/ChatRoom/chatMessageText';
-import ChatMessage, {
+import ChatMessage from './chatMessage';
+import {
   FlexBox,
   MessageTiteTypography,
   StyledAvatar,
   StyledListItem,
   StyledListItemAvatar,
   TimeTypography,
-} from '@/components/ChatRoom/chatMessage';
+} from '@/components/ChatRoom/styles';
 import { Chip, ListItemText } from '@mui/material';
 import MessagesSectionHeader from './messagesSectionHeader';
 import MessagesSectionFooter from './messagesSectionFooter';
 import { updateMessage } from '../../utils/updateMessageDisplay';
-import { BouncingLoaderIcon } from '@/components/icon/BouncingLoaderIcon';
+import { BouncingLoaderIcon } from '@/icons/BouncingLoaderIcon';
 import { useRef, useState } from 'react';
 import { LoremIpsum } from 'lorem-ipsum';
 import { dateStringFromDate } from '@/utils/dateFormat';
 import useLocalStorage from '@/hooks/useLocalStorage';
-import {
-  DateDivider,
-  DateTypography,
-  MessageContentBox,
-  StyledList,
-} from '@/components/StyledChatroom/ChatroomStyles';
+import { DateDivider, DateTypography, MessageContentBox, StyledList } from '@/components/StyledChatroom/ChatroomStyles';
 import { v4 as uuidv4 } from 'uuid';
-
-interface IMessagesSectionProps {
-  selectedThread: IChatUserThread | undefined;
-  isTyping: boolean;
-  setIsTyping: (isTyping: boolean) => void;
-}
+import { IMessagesSectionProps } from './interface';
 
 export default function MessagesSection(props: IMessagesSectionProps): JSX.Element {
   const [initialValue, setInitialValue] = useState<string | undefined>('');
@@ -141,7 +131,7 @@ export default function MessagesSection(props: IMessagesSectionProps): JSX.Eleme
 
     if (content !== undefined && content !== '') {
       setInitialValue(content);
-      const tempId = new Date().getTime().toString(36);
+      const tempId = uuidv4();
       const newMessage = content ?? '';
       const chatThreadId = props.selectedThread?.chatThreadId ?? '';
 
