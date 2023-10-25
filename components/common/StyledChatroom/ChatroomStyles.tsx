@@ -10,7 +10,6 @@ export const StyledContainer = styled(Container)(({ theme }) => ({
 // 72px is the header bar.
 export const StyledGrid = styled(Grid)`
   height: calc(var(--app-height) - 72px - 1px);
-  margin-top: 72px;
 `;
 
 export const EllipsisWrapperDiv = styled('div')`
