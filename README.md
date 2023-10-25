@@ -1,6 +1,6 @@
 # Twig Test Task
 
-Single page Chatbot, that allows you to chat with a bot that responds with random string responses. You can see a live demo by clicking (here)[]
+Single page Chatbot, that allows you to chat with a bot that responds with random string responses. You can see a live demo by clicking [here](https://twig-test-task-vert.vercel.app/)
 
 ### Tech Stack
 
