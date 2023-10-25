@@ -1,5 +1,6 @@
 'use client';
 
+import MainBox from '@/components/MainBox';
 import { appTheme } from '@/themes/theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { ReactNode } from 'react';
@@ -13,7 +14,7 @@ export default function MuiThemeProvider({ children }: MuiThemeProvider) {
     <ThemeProvider theme={appTheme}>
       <CssBaseline />
 
-      {children}
+      <MainBox>{children}</MainBox>
     </ThemeProvider>
   );
 }
