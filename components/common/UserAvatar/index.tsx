@@ -21,11 +21,11 @@ const extractInitials = (displayName: string) => {
   return parts[0][0];
 };
 
-export const UserAvatar = ({ displayName, children }: IUserAvatarProps) => {
+export const UserAvatar = ({ displayName, children, ...props }: IUserAvatarProps) => {
   const [profileSrc] = useState<string>();
 
   return (
-    <StyledAvatar alt={displayName} src={profileSrc}>
+    <StyledAvatar alt={displayName} src={profileSrc} {...props}>
       {children ? children : extractInitials(displayName ?? '')}
     </StyledAvatar>
   );
