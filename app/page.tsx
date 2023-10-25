@@ -4,11 +4,12 @@ import Grid from '@mui/material/Grid';
 import { styled, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { IChatUserThread } from '@/interfaces/chatThread';
-import MessagesSection from '@/components/ChatRoom/messagesSection';
 import { Container } from '@mui/material';
 import { EllipsisTypography, StyledGrid } from '@/components/StyledChatroom/ChatroomStyles';
 import { useTitle } from '@/hooks/useTitle';
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
+const MessagesSection = dynamic(() => import('@/components/ChatRoom/messagesSection'), { ssr: false });
 
 EllipsisTypography.defaultProps = {
   noWrap: true,

@@ -63,7 +63,7 @@ export default function MessagesSection(props: IMessagesSectionProps): JSX.Eleme
 
   const addTemporaryTextMessage = (tempId: string, content: string, chatThreadId: string): void => {
     const tempMessage: IChatMessageDisplay = {
-      id: tempId,
+      id: uuidv4(),
       userId: 'user1',
       chatThreadId,
       userDisplayName: `Twig User`,
@@ -110,6 +110,7 @@ export default function MessagesSection(props: IMessagesSectionProps): JSX.Eleme
         ...current,
         {
           ...tempMessage,
+          id: uuidv4(),
           content: `<p>${lorem.generateSentences(1)}</p>`,
           userId: 'user2',
           userDisplayName: `System`,
@@ -178,7 +179,7 @@ export default function MessagesSection(props: IMessagesSectionProps): JSX.Eleme
         {props.selectedThread !== undefined && (
           <StyledList>
             {messages.map((item: IChatMessageDisplay, i: number) => (
-              <React.Fragment key={i}>
+              <React.Fragment key={item.id}>
                 {(item.firstDate ?? false) && (
                   <DateDivider>
                     <Chip
