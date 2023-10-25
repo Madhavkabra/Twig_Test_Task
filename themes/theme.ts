@@ -245,7 +245,7 @@ export const appTheme = createTheme(theme, {
           },
           '&:hover::-webkit-scrollbar-thumb': {
             background: '#8f8f8f',
-            '-webkit-border-radius': '1ex',
+            WebkitBorderRadius: '1ex',
           },
           '&::-webkit-scrollbar-corner': {
             background: 'inherit',

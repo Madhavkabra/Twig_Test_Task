@@ -51,7 +51,7 @@ export default function MessagesSection(props: IMessagesSectionProps): JSX.Eleme
         chatThreadId: 'thread1',
         userDisplayName: 'System',
         createdDateTime: new Date().toString(),
-        content: 'Welcome to the chat box!',
+        content: '<p>Welcome to the chat box!</p>',
         messageType: ChatMessageType.Text,
         firstDate: true,
         date: dateStringFromDate(new Date().toString()),
@@ -120,7 +120,7 @@ export default function MessagesSection(props: IMessagesSectionProps): JSX.Eleme
         ...current,
         {
           ...tempMessage,
-          content: lorem.generateSentences(1),
+          content: `<p>${lorem.generateSentences(1)}</p>`,
           userId: 'user2',
           userDisplayName: `System`,
           messageTitle: 'System',

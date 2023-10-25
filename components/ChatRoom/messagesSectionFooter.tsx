@@ -147,7 +147,7 @@ export default function MessagesSectionFooter(props: IMessagesSectionFooterProps
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [count, props.isFirstTyping]);
+  }, [count, props, props.isFirstTyping]);
 
   const handleTyping = () => {
     if (props.isFirstTyping) {
