@@ -1,0 +1,18 @@
+'use client';
+
+import { useState, useEffect, SetStateAction, Dispatch } from 'react';
+
+const useLocalStorage = <T>(defaultValue: T, key: string): [T, Dispatch<SetStateAction<T>>] => {
+  const [value, setValue] = useState<T>(() => {
+    const stickyValue = window.localStorage.getItem(key);
+    return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue;
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+
+  return [value, setValue];
+};
+
+export default useLocalStorage;
