@@ -6,7 +6,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { IChatUserThread } from '@/interfaces/chatThread';
 import MessagesSection from '@/components/ChatRoom/messagesSection';
 import { Container } from '@mui/material';
-import { EllipsisTypography, StyledGrid } from '@/components/common/StyledChatroom/ChatroomStyles';
+import { EllipsisTypography, StyledGrid } from '@/components/StyledChatroom/ChatroomStyles';
 import { useTitle } from '@/hooks/useTitle';
 import { useState } from 'react';
 

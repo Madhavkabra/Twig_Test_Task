@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import AppHeight from '@/components/AppHeight';
-import MuiThemeProvider from '@/components/common/ThemeProvider';
+import MuiThemeProvider from '@/components/ThemeProvider';
 import Header from '@/components/Header';
 
 export const metadata: Metadata = {

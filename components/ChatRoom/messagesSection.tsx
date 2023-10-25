@@ -29,7 +29,7 @@ import {
   DateTypography,
   MessageContentBox,
   StyledList,
-} from '@/components/common/StyledChatroom/ChatroomStyles';
+} from '@/components/StyledChatroom/ChatroomStyles';
 import { v4 as uuidv4 } from 'uuid';
 
 interface IMessagesSectionProps {
