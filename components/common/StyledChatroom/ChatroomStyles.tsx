@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Container, Divider, Grid, List, ListItemAvatar, Typography, styled } from '@mui/material';
 import { UserAvatar } from '../UserAvatar';
 

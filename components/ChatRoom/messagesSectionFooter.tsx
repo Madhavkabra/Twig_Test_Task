@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, styled, useMediaQuery, useTheme } from '@mui/material';
 import { Editor } from '@tinymce/tinymce-react';
 import { IChatUserThread } from '@/interfaces/chatThread';

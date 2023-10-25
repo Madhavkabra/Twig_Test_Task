@@ -1,3 +1,5 @@
+'use client';
+
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import { IChatUserThread } from '@/interfaces/chatThread';
@@ -40,7 +42,6 @@ export default function MessagesSection(props: IMessagesSectionProps): JSX.Eleme
   const editorRef = useRef<TinyMCEEditor | null>(null);
   const messagesContainerRef = useRef<Element | null>();
   const messagesEndRef = useRef<Element | null>();
-  const uploadRef = useRef<HTMLInputElement>(null);
   const [messages, setMessages] = useLocalStorage<IChatMessageDisplay[]>(
     [
       {
@@ -130,10 +131,8 @@ export default function MessagesSection(props: IMessagesSectionProps): JSX.Eleme
     // Scroll to bottom to see new message and set focus again for the next message
     setInitialValue('');
     editorRef.current?.focus();
+    editorRef.current?.setContent('');
     scrollToBottom();
-    if (uploadRef.current) {
-      uploadRef.current.value = '';
-    }
   };
 
   const onSendClick = (): void => {
@@ -217,7 +216,7 @@ export default function MessagesSection(props: IMessagesSectionProps): JSX.Eleme
                   primary={
                     <React.Fragment>
                       <FlexBox>
-                        <MessageTiteTypography variant="subtitle1">{'System user'}</MessageTiteTypography>
+                        <MessageTiteTypography variant="subtitle1">System</MessageTiteTypography>
                         <TimeTypography variant="caption">
                           {new Date().toLocaleTimeString('en-Us', {
                             hour12: true,

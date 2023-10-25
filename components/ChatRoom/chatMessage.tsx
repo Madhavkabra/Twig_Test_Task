@@ -1,3 +1,5 @@
+'use client';
+
 import { IChatMessageDisplay } from '@/interfaces/chatMessage';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';

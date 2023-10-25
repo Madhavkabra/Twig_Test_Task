@@ -1,3 +1,5 @@
+'use client';
+
 import { IChatMessageDisplay } from '@/interfaces/chatMessage';
 import Sanitize from '@/components/common/Sanitize';
 import Typography from '@mui/material/Typography';

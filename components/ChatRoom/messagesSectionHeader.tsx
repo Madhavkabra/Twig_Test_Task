@@ -1,3 +1,5 @@
+'use client';
+
 import Typography from '@mui/material/Typography';
 import { Box, Grid, Stack, styled, useMediaQuery, useTheme } from '@mui/material';
 import { UserAvatar } from '@/components/common/UserAvatar';
